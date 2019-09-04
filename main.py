@@ -34,7 +34,8 @@ def start_message(message):
 
 @bot.message_handler(content_types=['text'])
 def send_text(message):
-	global dialogBot
+	# global dialogBot
+	# state = State()
 	state = dialogBot.users[message.chat.id].state
 	print(state)
 	if state == State.Start:
