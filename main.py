@@ -21,7 +21,13 @@ dialogBot = DialogBot()
 
 bot = telebot.TeleBot('648232646:AAHfynYQnWd_xD1knO6gZ7bE4V2_hQI_EZE')
 
-
+def isItemExist(_object, test_list):
+	for item in test_list: 
+		# print(item)
+		if(item == _object.id) : 
+			print ("Element Exists") 
+			return True
+	return False
 
 @bot.message_handler(commands=['start'])
 def start_message(message):
@@ -34,13 +40,17 @@ def start_message(message):
 
 @bot.message_handler(content_types=['text'])
 def send_text(message):
-	# global dialogBot
+	print(message.chat.id)
+	global dialogBot
 	# state = State()
 	if not dialogBot.users:
 		print('no users')
 		return
-	if not dialogBot.users[message.chat.id]:
+	# if User(message.chat.id, State.Start) not in dialogBot.users:
+	if not isItemExist(User(message.chat.id, State.Start), dialogBot.users):
 		print("no such user")
+		# print (User(message.chat.id, State.Start).id)
+		print(*dialogBot.users)
 		return
 	state = dialogBot.users[message.chat.id].state
 	print(state)
