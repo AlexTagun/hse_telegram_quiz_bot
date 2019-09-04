@@ -36,6 +36,11 @@ def start_message(message):
 def send_text(message):
 	# global dialogBot
 	# state = State()
+	if not dialogBot.users:
+		print('no users')
+		return
+	if not dialogBot.users[message.chat.id]:
+		print(f"no such user ({message.chat.id})")
 	state = dialogBot.users[message.chat.id].state
 	print(state)
 	if state == State.Start:
@@ -125,5 +130,6 @@ def showResults(message):
 
 	bot.send_message(message.chat.id, text, reply_markup=keyboard)
  
+if __name__ == "__main__":
 
-bot.polling()
+	bot.polling()
