@@ -39,8 +39,8 @@ def send_text(message):
 	if not dialogBot.users:
 		print('no users')
 		return
-	if not dialogBot.users[message.chat.id]:
-		print(f"no such user ({message.chat.id})")
+	# if not dialogBot.users[message.chat.id]:
+		# print(f"no such user ({message.chat.id})")
 	state = dialogBot.users[message.chat.id].state
 	print(state)
 	if state == State.Start:
