@@ -1,15 +1,19 @@
 from State import State
 from CountryParser import CountryParser
+from TruthOrLieParser import TruthOrLieParser
 from Answer import Answer
 from QuizQuestion import QuizQuestion
 
 class QuestionManager:
-	def __init__(self):
+	def __init__(self, quizType):
 		self.cnt = 0
 		self.maxQuestions = 10
 		self.rightAnswers = 0
-		countryParser = CountryParser()
-		self.questions = countryParser.questions[:10]
+		if quizType == 'CountryQuiz':
+			parser = CountryParser()
+		else:
+			parser = TruthOrLieParser()
+		self.questions = parser.questions[:10]
 		self.currQuestion = ''
 
 	def getQuestion(self):
