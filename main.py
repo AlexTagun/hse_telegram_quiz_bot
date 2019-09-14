@@ -1,3 +1,6 @@
+#! /usr/bin/env python
+# -*- coding: utf-8 -*-
+
 import telebot
 import collections
 from QuestionManager import QuestionManager
