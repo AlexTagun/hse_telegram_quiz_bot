@@ -48,7 +48,7 @@ def send_text(message):
 		return
 	if not isItemExist(User(message.chat.id, State.Start), dialogBot.users):
 		print("no such user")
-		print(*dialogBot.users)
+		print(dialogBot.users)
 		return
 	state = dialogBot.users[message.chat.id].state
 	print(state)
