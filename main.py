@@ -133,8 +133,9 @@ def pickAnswer(message, num):
 		
 		text = 'Правильный ответ : ' + questionManager.currQuestion.answers[questionManager.getRightAnswer()].text
 		bot.send_message(message.chat.id, text, reply_markup=keyboard)
-	
-	bot.send_message(message.chat.id, questionManager.currQuestion.info, reply_markup=keyboard)
+		
+	if(questionManager.currQuestion.info != ""):
+		bot.send_message(message.chat.id, questionManager.currQuestion.info, reply_markup=keyboard)
 
 def startTruthOrLieQuiz(message):
 	global dialogBot
